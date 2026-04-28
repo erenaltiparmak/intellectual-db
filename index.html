@@ -389,115 +389,117 @@
   ::-webkit-scrollbar-thumb { background:var(--border-2); border-radius:3px; }
   ::-webkit-scrollbar-thumb:hover { background:var(--accent); }
 
-  /* ── Life Tab ──────────────────────────────────────────────────── */
+  /* ── Life / Habits Tab ─────────────────────────────────────────── */
   .life-layout { display:flex; flex-direction:column; gap:28px; max-width:680px; margin:0 auto; }
-
   .life-panel { background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
-
-  .life-panel-header {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 22px; border-bottom:1px solid var(--border);
-  }
+  .life-panel-header { display:flex; align-items:center; justify-content:space-between; padding:16px 22px; border-bottom:1px solid var(--border); }
   .life-panel-title-wrap { display:flex; align-items:baseline; gap:12px; }
   .life-panel-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:600; color:var(--text); }
   .life-panel-count { font-size:0.8rem; color:var(--text-3); font-style:italic; }
 
-  /* Tasks */
-  .task-empty { padding:32px 22px; text-align:center; color:var(--text-3); font-style:italic; font-size:.9rem; }
-
-  .task-item {
-    display:flex; align-items:center; gap:12px;
-    padding:11px 22px; border-bottom:1px solid var(--border);
-    animation:fadeUp .25s ease both;
-  }
-  .task-item:last-child { border-bottom:none; }
-
-  .task-check {
-    width:20px; height:20px; border-radius:50%; border:1.5px solid var(--border-2);
-    cursor:pointer; flex-shrink:0; transition:all .2s;
-    display:flex; align-items:center; justify-content:center; color:transparent;
-    font-size:.65rem;
-  }
-  .task-check:hover { border-color:var(--life); background:rgba(143,168,122,.12); color:var(--life); }
-
-  .task-text { flex:1; font-size:.95rem; color:var(--text-2); line-height:1.4; }
-
-  .task-del-btn {
-    background:none; border:none; color:var(--text-3); font-size:.8rem;
-    cursor:pointer; padding:3px 6px; border-radius:3px;
-    opacity:0; transition:opacity .15s,color .15s;
-  }
-  .task-item:hover .task-del-btn { opacity:1; }
-  .task-del-btn:hover { color:#c05050; }
-
-  /* completing animation */
-  .task-item.completing {
-    opacity:0; transform:translateX(12px);
-    transition:opacity .3s ease, transform .3s ease;
-    pointer-events:none;
-  }
-
-  /* Habits */
-  .habit-empty { padding:32px 22px; text-align:center; color:var(--text-3); font-style:italic; font-size:.9rem; }
+  /* Habits list */
+  .habit-empty { padding:36px 22px; text-align:center; color:var(--text-3); font-style:italic; font-size:.9rem; }
 
   .habit-item {
     display:flex; align-items:center; gap:14px;
-    padding:13px 22px; border-bottom:1px solid var(--border);
-    animation:fadeUp .25s ease both; transition:background .2s;
+    padding:14px 22px; border-bottom:1px solid var(--border);
+    animation:fadeUp .25s ease both; cursor:pointer;
+    transition:background .15s;
   }
   .habit-item:last-child { border-bottom:none; }
-  .habit-item.done-today { background:rgba(143,168,122,.05); }
+  .habit-item:hover { background:rgba(143,168,122,.04); }
+  .habit-item.done-today { background:rgba(143,168,122,.06); }
 
   .habit-complete-btn {
     width:28px; height:28px; border-radius:50%; flex-shrink:0; cursor:pointer;
     border:2px solid var(--border-2); background:transparent;
     display:flex; align-items:center; justify-content:center;
-    font-size:.75rem; color:transparent;
-    transition:all .2s;
+    font-size:.75rem; color:transparent; transition:all .2s;
   }
   .habit-complete-btn:hover:not(:disabled) { border-color:var(--life); color:var(--life); background:rgba(143,168,122,.12); }
   .habit-item.done-today .habit-complete-btn { border-color:var(--life); background:var(--life); color:#0c1209; }
   .habit-complete-btn:disabled { cursor:default; }
 
-  .habit-info { flex:1; min-width:0; display:flex; flex-direction:column; gap:4px; }
-  .habit-name { font-size:.95rem; color:var(--text-2); transition:color .2s; }
+  .habit-info { flex:1; min-width:0; }
+  .habit-name { font-size:.95rem; color:var(--text-2); transition:color .2s; line-height:1.3; }
   .habit-item.done-today .habit-name { color:var(--text-3); }
+  .habit-sub { font-size:.76rem; color:var(--text-3); margin-top:2px; font-style:italic; }
 
-  .habit-streaks { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .habit-streak-badge {
-    display:flex; align-items:center; gap:4px;
-    font-size:.75rem; color:var(--text-3); font-family:'Crimson Pro',serif;
+  .habit-streak-display {
+    display:flex; align-items:center; gap:5px; flex-shrink:0;
   }
-  .habit-streak-badge .streak-icon { font-size:.82rem; }
-  .habit-streak-val { font-family:'Playfair Display',serif; font-weight:600; font-size:.82rem; }
-  .habit-streak-badge.current .streak-icon { color:#e09a30; }
-  .habit-streak-badge.current .habit-streak-val { color:var(--accent-2); }
-  .habit-streak-badge.best .streak-icon { color:var(--life); }
-  .habit-streak-badge.best .habit-streak-val { color:var(--life); }
-
-  .habit-sep { width:1px; height:10px; background:var(--border-2); }
+  .habit-streak-num {
+    font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700;
+    color:var(--accent-2); line-height:1;
+  }
+  .habit-streak-fire { font-size:1.1rem; line-height:1; }
+  .habit-item.done-today .habit-streak-num { color:var(--life); }
 
   .habit-del-btn {
     background:none; border:none; color:var(--text-3); font-size:.8rem;
     cursor:pointer; padding:3px 6px; border-radius:3px;
-    opacity:0; transition:opacity .15s,color .15s;
+    opacity:0; transition:opacity .15s,color .15s; flex-shrink:0;
   }
   .habit-item:hover .habit-del-btn { opacity:1; }
   .habit-del-btn:hover { color:#c05050; }
 
-  /* Life add form slide-down */
-  .life-add-area {
-    overflow:hidden; max-height:0; padding:0 22px;
-    border-top:0px solid var(--border);
-    transition:max-height .3s ease, padding .3s ease, border-top-width .3s;
+  /* Habit detail modal */
+  .habit-detail-modal {
+    background:var(--bg-2); border:1px solid var(--life); border-radius:var(--radius-lg);
+    width:100%; max-width:420px; overflow:hidden;
+    box-shadow:0 32px 80px rgba(0,0,0,.8), 0 0 32px var(--life-glow);
   }
+  .habit-detail-header { padding:22px 24px 16px; border-bottom:1px solid var(--border); }
+  .habit-detail-name { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--text); line-height:1.2; }
+  .habit-detail-status { font-size:.82rem; color:var(--text-3); margin-top:4px; font-style:italic; }
+
+  .habit-detail-body { padding:20px 24px; display:flex; flex-direction:column; gap:18px; }
+
+  .habit-stats-row { display:flex; gap:20px; }
+  .habit-stat-box {
+    flex:1; background:var(--bg-3); border:1px solid var(--border-2);
+    border-radius:var(--radius); padding:12px 14px; text-align:center;
+  }
+  .habit-stat-val { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--accent-2); line-height:1; }
+  .habit-stat-val.life-col { color:var(--life); }
+  .habit-stat-label { font-size:.72rem; color:var(--text-3); text-transform:uppercase; letter-spacing:.08em; margin-top:4px; }
+
+  /* Progress bar */
+  .habit-progress-section { display:flex; flex-direction:column; gap:8px; }
+  .habit-progress-header { display:flex; justify-content:space-between; align-items:baseline; }
+  .habit-progress-label { font-size:.8rem; color:var(--text-3); text-transform:uppercase; letter-spacing:.07em; }
+  .habit-progress-days { font-size:.8rem; color:var(--text-3); font-family:'Playfair Display',serif; }
+
+  .habit-progress-bar-bg {
+    height:8px; background:var(--border-2); border-radius:4px; overflow:hidden;
+  }
+  .habit-progress-bar-fill {
+    height:100%; border-radius:4px;
+    background:linear-gradient(to right, var(--life), #b8d4a0);
+    transition:width .6s cubic-bezier(.16,1,.3,1);
+  }
+  .habit-progress-bar-fill.complete { background:linear-gradient(to right,var(--accent),var(--accent-2)); }
+
+  .habit-progress-msg {
+    font-size:.86rem; text-align:center; font-style:italic;
+    padding:8px 12px; border-radius:var(--radius);
+    border:1px solid var(--border-2); background:var(--bg-3);
+    color:var(--text-3); line-height:1.4;
+  }
+  .habit-progress-msg.complete { color:var(--accent-2); border-color:rgba(192,124,24,.3); background:rgba(192,124,24,.07); }
+
+  .habit-detail-footer { display:flex; gap:8px; padding:14px 24px 20px; border-top:1px solid var(--border); flex-wrap:wrap; align-items:center; }
+  .btn-count-yesterday { font-size:.8rem; color:var(--text-3); border-color:var(--border-2); }
+  .btn-count-yesterday:hover { color:var(--text); }
+
+  /* Life add form slide-down */
+  .life-add-area { overflow:hidden; max-height:0; padding:0 22px; transition:max-height .3s ease,padding .3s ease,border-top-width .3s; }
   .life-add-area.open { max-height:120px; padding:14px 22px 16px; border-top:1px solid var(--border); }
   .life-add-row { display:flex; gap:8px; align-items:center; }
   .life-add-row input[type="text"] {
     flex:1; background:var(--bg-3); border:1px solid var(--border-2);
     border-radius:var(--radius); color:var(--text); font-family:'Crimson Pro',serif;
-    font-size:.97rem; padding:9px 12px; outline:none;
-    transition:border-color .2s, box-shadow .2s;
+    font-size:.97rem; padding:9px 12px; outline:none; transition:border-color .2s,box-shadow .2s;
   }
   .life-add-row input:focus { border-color:var(--life); box-shadow:0 0 0 3px var(--life-glow); }
 
@@ -572,7 +574,7 @@
       <span class="count-reading" id="count-reading" style="display:none"></span>
     </div>
     <div class="header-right">
-      <span class="version-badge">v0.9.0</span>
+      <span class="version-badge">v0.9.1</span>
       <button class="btn-logout" id="btn-logout" title="Sign out">Sign out</button>
     </div>
   </div>
@@ -580,7 +582,7 @@
     <button class="tab-btn active"     id="tab-books"  onclick="switchTab('books')">📚 Books</button>
     <button class="tab-btn movies-tab" id="tab-movies" onclick="switchTab('movies')">🎬 Movies</button>
     <button class="tab-btn series-tab" id="tab-series" onclick="switchTab('series')">📺 Series</button>
-    <button class="tab-btn life-tab"   id="tab-life"   onclick="switchTab('life')">🌿 Life</button>
+    <button class="tab-btn life-tab"   id="tab-life"   onclick="switchTab('life')">🌿 Habits</button>
   </div>
 </header>
 
@@ -598,30 +600,9 @@
     <div class="item-grid" id="series-grid" style="display:none"></div>
   </div>
 
-  <!-- Life Tab -->
+  <!-- Habits Tab -->
   <div class="tab-section" id="section-life">
     <div class="life-layout">
-
-      <!-- Tasks Panel -->
-      <div class="life-panel" id="tasks-panel">
-        <div class="life-panel-header">
-          <div class="life-panel-title-wrap">
-            <span class="life-panel-title">Tasks</span>
-            <span class="life-panel-count" id="tasks-count"></span>
-          </div>
-          <button class="btn btn-primary btn-sm" id="btn-add-task-toggle">+ Add Task</button>
-        </div>
-        <div class="life-add-area" id="tasks-add-area">
-          <div class="life-add-row">
-            <input type="text" id="task-input" placeholder="What needs to be done?" autocomplete="off" />
-            <button class="btn btn-ghost btn-sm" id="btn-task-cancel">Cancel</button>
-            <button class="btn btn-primary btn-sm" id="btn-task-save">Add</button>
-          </div>
-        </div>
-        <div id="tasks-list"></div>
-      </div>
-
-      <!-- Habits Panel -->
       <div class="life-panel" id="habits-panel">
         <div class="life-panel-header">
           <div class="life-panel-title-wrap">
@@ -639,7 +620,44 @@
         </div>
         <div id="habits-list"></div>
       </div>
+    </div>
+  </div>
 
+  <!-- Habit Detail Modal -->
+  <div class="modal-backdrop" id="habit-detail-backdrop">
+    <div class="habit-detail-modal panel">
+      <div class="habit-detail-header">
+        <div class="habit-detail-name" id="habit-detail-name"></div>
+        <div class="habit-detail-status" id="habit-detail-status"></div>
+      </div>
+      <div class="habit-detail-body">
+        <div class="habit-stats-row">
+          <div class="habit-stat-box">
+            <div class="habit-stat-val" id="hd-streak"></div>
+            <div class="habit-stat-label">🔥 Current Streak</div>
+          </div>
+          <div class="habit-stat-box">
+            <div class="habit-stat-val life-col" id="hd-longest"></div>
+            <div class="habit-stat-label">🏆 Longest Streak</div>
+          </div>
+        </div>
+        <div class="habit-progress-section">
+          <div class="habit-progress-header">
+            <span class="habit-progress-label">21-Day Progress</span>
+            <span class="habit-progress-days" id="hd-progress-days"></span>
+          </div>
+          <div class="habit-progress-bar-bg">
+            <div class="habit-progress-bar-fill" id="hd-progress-fill" style="width:0%"></div>
+          </div>
+          <div class="habit-progress-msg" id="hd-progress-msg"></div>
+        </div>
+      </div>
+      <div class="habit-detail-footer">
+        <button class="btn btn-ghost btn-sm btn-count-yesterday" id="btn-count-yesterday">+ Count Yesterday</button>
+        <div style="flex:1"></div>
+        <button class="btn btn-ghost btn-sm" id="btn-habit-detail-close">Close</button>
+        <button class="btn btn-danger btn-sm" id="btn-delete-habit-detail">Delete</button>
+      </div>
     </div>
   </div>
 </main>
@@ -990,14 +1008,6 @@ async function sbInsertSeriesNote(n)    { const {error}=await db.from('series_no
 async function sbUpdateSeriesNote(id,t) { const {error}=await db.from('series_notes').update({text:t}).eq('id',id); if(error) throw error; }
 async function sbDeleteSeriesNote(id)   { const {error}=await db.from('series_notes').delete().eq('id',id); if(error) throw error; }
 
-// ── Supabase: Tasks ───────────────────────────────────────────────────────────
-async function sbFetchTasks() {
-  const {data,error}=await db.from('tasks').select('*').order('created_at',{ascending:true});
-  if(error) throw error; return data;
-}
-async function sbInsertTask(t) { const {error}=await db.from('tasks').insert({...t,created_at:turkeyISOString()}); if(error) throw error; }
-async function sbDeleteTask(id){ const {error}=await db.from('tasks').delete().eq('id',id); if(error) throw error; }
-
 // ── Supabase: Habits ──────────────────────────────────────────────────────────
 async function sbFetchHabits() {
   const {data,error}=await db.from('habits').select('*').order('created_at',{ascending:true});
@@ -1038,7 +1048,7 @@ function computeSeriesRating(s) {
 }
 
 // ── State ─────────────────────────────────────────────────────────────────────
-let books=[],movies=[],seriesList=[],tasks=[],habits=[];
+let books=[],movies=[],seriesList=[],habits=[];
 let activeBookId=null,activeMovieId=null,activeSeriesId=null,activeSeriesSeason=1;
 let currentTab='books';
 let bCoverUrl=null,mCoverUrl=null,sCoverUrl=null;
@@ -1109,8 +1119,8 @@ document.getElementById('btn-logout').addEventListener('click',async()=>{
 async function loadAppData() {
   showLoading('Opening your database…');
   try {
-    [books,movies,seriesList,tasks,habits]=await Promise.all([sbFetchBooks(),sbFetchMovies(),sbFetchSeries(),sbFetchTasks(),sbFetchHabits()]);
-    renderBooks(); renderMovies(); renderSeriesGrid(); renderTasks(); renderHabits();
+    [books,movies,seriesList,habits]=await Promise.all([sbFetchBooks(),sbFetchMovies(),sbFetchSeries(),sbFetchHabits()]);
+    renderBooks(); renderMovies(); renderSeriesGrid(); renderHabits();
     showApp();
   } catch(err) {
     console.error('Load error:',err);
@@ -1166,7 +1176,7 @@ function updateCounts() {
     const n=seriesList.length; ct.textContent=n===0?'empty':n===1?'1 series':`${n} series`; cr.style.display='none';sep.style.display='none';
   } else {
     const done=habits.filter(h=>h.last_completed===todayStr()).length;
-    ct.textContent=`${tasks.length} task${tasks.length!==1?'s':''} · ${habits.length} habit${habits.length!==1?'s':''}`;
+    ct.textContent=habits.length===0?'empty':`${habits.length} habit${habits.length!==1?'s':''}`;
     if(done>0){cr.style.display='';sep.style.display='';cr.textContent=`${done} done today`;}
     else{cr.style.display='none';sep.style.display='none';}
   }
@@ -1658,75 +1668,9 @@ document.getElementById('btn-add').addEventListener('click',()=>{
   else openSeriesForm();
 });
 
-// ── Tasks ─────────────────────────────────────────────────────────────────────
-function renderTasks() {
-  const listEl = document.getElementById('tasks-list');
-  const countEl = document.getElementById('tasks-count');
-  countEl.textContent = tasks.length === 0 ? '' : `${tasks.length} remaining`;
-  if (!tasks.length) {
-    listEl.innerHTML = `<div class="task-empty">No tasks — you're all clear!</div>`;
-    updateCounts(); return;
-  }
-  listEl.innerHTML = tasks.map(t => `
-    <div class="task-item" id="task-${t.id}">
-      <button class="task-check" data-tid="${t.id}" title="Complete">✓</button>
-      <span class="task-text">${t.text}</span>
-      <button class="task-del-btn" data-tid="${t.id}" title="Delete">✕</button>
-    </div>`).join('');
-
-  listEl.querySelectorAll('.task-check').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const row = document.getElementById(`task-${btn.dataset.tid}`);
-      row.classList.add('completing');
-      setTimeout(async () => {
-        const id = btn.dataset.tid;
-        tasks = tasks.filter(t => t.id !== id);
-        renderTasks();
-        try { await sbDeleteTask(id); }
-        catch { showToast('Could not complete task.', 'error'); tasks = await sbFetchTasks(); renderTasks(); }
-      }, 320);
-    });
-  });
-
-  listEl.querySelectorAll('.task-del-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      openConfirm('Delete this task?', async () => {
-        const id = btn.dataset.tid;
-        tasks = tasks.filter(t => t.id !== id);
-        renderTasks();
-        try { await sbDeleteTask(id); }
-        catch { showToast('Could not delete task.', 'error'); tasks = await sbFetchTasks(); renderTasks(); }
-      });
-    });
-  });
-  updateCounts();
-}
-
-// Task add form
-const tasksAddArea = document.getElementById('tasks-add-area');
-const taskInput    = document.getElementById('task-input');
-
-document.getElementById('btn-add-task-toggle').addEventListener('click', () => {
-  tasksAddArea.classList.toggle('open');
-  if (tasksAddArea.classList.contains('open')) setTimeout(() => taskInput.focus(), 50);
-});
-document.getElementById('btn-task-cancel').addEventListener('click', () => {
-  tasksAddArea.classList.remove('open'); taskInput.value = '';
-});
-async function saveTask() {
-  const text = taskInput.value.trim();
-  if (!text) { taskInput.focus(); return; }
-  const t = { id: genId(), text };
-  tasks.push(t);
-  taskInput.value = ''; tasksAddArea.classList.remove('open');
-  renderTasks();
-  try { await sbInsertTask(t); }
-  catch { showToast('Could not save task.', 'error'); tasks = await sbFetchTasks(); renderTasks(); }
-}
-document.getElementById('btn-task-save').addEventListener('click', saveTask);
-taskInput.addEventListener('keydown', e => { if (e.key === 'Enter') saveTask(); });
-
 // ── Habits ────────────────────────────────────────────────────────────────────
+let activeHabitId = null;
+
 function isCompletedToday(h) { return h.last_completed === todayStr(); }
 
 function renderHabits() {
@@ -1741,56 +1685,41 @@ function renderHabits() {
   listEl.innerHTML = habits.map(h => {
     const done = isCompletedToday(h);
     return `
-      <div class="habit-item${done ? ' done-today' : ''}" id="habit-${h.id}">
-        <button class="habit-complete-btn" data-hid="${h.id}" ${done ? 'disabled' : ''} title="${done ? 'Done today!' : 'Mark complete'}">✓</button>
+      <div class="habit-item${done?' done-today':''}" id="habit-${h.id}" data-hid="${h.id}">
+        <button class="habit-complete-btn" data-hid="${h.id}" ${done?'disabled':''} title="${done?'Done today!':'Mark complete'}">✓</button>
         <div class="habit-info">
           <div class="habit-name">${h.name}</div>
-          <div class="habit-streaks">
-            <div class="habit-streak-badge current">
-              <span class="streak-icon">🔥</span>
-              <span class="habit-streak-val">${h.streak}</span>
-              <span style="color:var(--text-3);margin-left:2px">day streak</span>
-            </div>
-            <div class="habit-sep"></div>
-            <div class="habit-streak-badge best">
-              <span class="streak-icon">🏆</span>
-              <span class="habit-streak-val">${h.longest_streak}</span>
-              <span style="color:var(--text-3);margin-left:2px">best</span>
-            </div>
-          </div>
+          <div class="habit-sub">${done?'Done for today':'Tap to complete'}</div>
+        </div>
+        <div class="habit-streak-display">
+          <span class="habit-streak-num">${h.streak||0}</span>
+          <span class="habit-streak-fire">🔥</span>
         </div>
         <button class="habit-del-btn" data-hid="${h.id}" title="Delete habit">✕</button>
       </div>`;
   }).join('');
 
-  listEl.querySelectorAll('.habit-complete-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const id = btn.dataset.hid;
-      const idx = habits.findIndex(h => h.id === id);
-      if (idx === -1) return;
-      const h = habits[idx];
-      const today = todayStr();
-      const yesterday = yesterdayStr();
-      // Calculate new streak
-      let newStreak;
-      if (h.last_completed === yesterday) {
-        newStreak = (h.streak || 0) + 1;          // consecutive — extend
-      } else if (h.last_completed === today) {
-        return;                                    // already done
-      } else {
-        newStreak = 1;                             // streak broken — restart
-      }
-      const newLongest = Math.max(newStreak, h.longest_streak || 0);
-      habits[idx] = { ...h, streak: newStreak, longest_streak: newLongest, last_completed: today };
-      renderHabits();
-      try { await sbUpdateHabitStreak(id, newStreak, newLongest, today); }
-      catch { showToast('Could not save habit.', 'error'); habits = await sbFetchHabits(); renderHabits(); }
+  // click row → open detail (but not on buttons)
+  listEl.querySelectorAll('.habit-item').forEach(row => {
+    row.addEventListener('click', e => {
+      if (e.target.closest('.habit-complete-btn') || e.target.closest('.habit-del-btn')) return;
+      openHabitDetail(row.dataset.hid);
     });
   });
 
+  // complete button
+  listEl.querySelectorAll('.habit-complete-btn').forEach(btn => {
+    btn.addEventListener('click', async e => {
+      e.stopPropagation();
+      await completeHabit(btn.dataset.hid, todayStr());
+    });
+  });
+
+  // delete button
   listEl.querySelectorAll('.habit-del-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      openConfirm('Delete this habit? Your streak data will be lost.', async () => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openConfirm('Delete this habit? All streak data will be lost.', async () => {
         const id = btn.dataset.hid;
         habits = habits.filter(h => h.id !== id);
         renderHabits();
@@ -1802,34 +1731,124 @@ function renderHabits() {
   updateCounts();
 }
 
+async function completeHabit(id, dateStr) {
+  const idx = habits.findIndex(h => h.id === id);
+  if (idx === -1) return;
+  const h = habits[idx];
+  if (h.last_completed === dateStr) return; // already done
+  const prevDay = dateStr === todayStr() ? yesterdayStr() : (() => {
+    const [y,m,d] = dateStr.split('-').map(Number);
+    const prev = new Date(y, m-1, d); prev.setDate(prev.getDate()-1);
+    const p = n => String(n).padStart(2,'0');
+    return `${prev.getFullYear()}-${p(prev.getMonth()+1)}-${p(prev.getDate())}`;
+  })();
+  const newStreak = h.last_completed === prevDay ? (h.streak||0)+1 : 1;
+  const newLongest = Math.max(newStreak, h.longest_streak||0);
+  habits[idx] = {...h, streak:newStreak, longest_streak:newLongest, last_completed:dateStr};
+  renderHabits();
+  if (activeHabitId === id) renderHabitDetail(id);
+  try { await sbUpdateHabitStreak(id, newStreak, newLongest, dateStr); }
+  catch { showToast('Could not save.', 'error'); habits = await sbFetchHabits(); renderHabits(); }
+}
+
 // Habit add form
 const habitsAddArea = document.getElementById('habits-add-area');
 const habitInput    = document.getElementById('habit-input');
-
 document.getElementById('btn-add-habit-toggle').addEventListener('click', () => {
   habitsAddArea.classList.toggle('open');
   if (habitsAddArea.classList.contains('open')) setTimeout(() => habitInput.focus(), 50);
 });
-document.getElementById('btn-habit-cancel').addEventListener('click', () => {
-  habitsAddArea.classList.remove('open'); habitInput.value = '';
-});
+document.getElementById('btn-habit-cancel').addEventListener('click', () => { habitsAddArea.classList.remove('open'); habitInput.value=''; });
 async function saveHabit() {
-  const name = habitInput.value.trim();
-  if (!name) { habitInput.focus(); return; }
-  const h = { id: genId(), name, streak: 0, longest_streak: 0, last_completed: '' };
-  habits.push(h);
-  habitInput.value = ''; habitsAddArea.classList.remove('open');
+  const name = habitInput.value.trim(); if (!name) { habitInput.focus(); return; }
+  const h = { id:genId(), name, streak:0, longest_streak:0, last_completed:'' };
+  habits.push(h); habitInput.value=''; habitsAddArea.classList.remove('open');
   renderHabits();
   try { await sbInsertHabit(h); }
   catch { showToast('Could not save habit.', 'error'); habits = await sbFetchHabits(); renderHabits(); }
 }
 document.getElementById('btn-habit-save').addEventListener('click', saveHabit);
-habitInput.addEventListener('keydown', e => { if (e.key === 'Enter') saveHabit(); });
+habitInput.addEventListener('keydown', e => { if (e.key==='Enter') saveHabit(); });
+
+// Habit Detail Modal
+const habitDetailBd = document.getElementById('habit-detail-backdrop');
+
+function renderHabitDetail(id) {
+  const h = habits.find(x => x.id === id); if (!h) return;
+  const streak  = h.streak || 0;
+  const longest = h.longest_streak || 0;
+  const pct     = Math.min(streak / 21, 1);
+  const isHabit = streak >= 21;
+
+  document.getElementById('habit-detail-name').textContent = h.name;
+  document.getElementById('habit-detail-status').textContent =
+    isCompletedToday(h) ? '✓ Completed today' : 'Not yet done today';
+
+  document.getElementById('hd-streak').textContent  = streak;
+  document.getElementById('hd-longest').textContent = longest;
+
+  const fill = document.getElementById('hd-progress-fill');
+  fill.style.width = `${pct*100}%`;
+  fill.className   = 'habit-progress-bar-fill' + (isHabit ? ' complete' : '');
+
+  document.getElementById('hd-progress-days').textContent = `${Math.min(streak,21)} / 21 days`;
+
+  const msg = document.getElementById('hd-progress-msg');
+  if (isHabit) {
+    msg.textContent   = "It's a habit now! 🎉 Keep going.";
+    msg.className     = 'habit-progress-msg complete';
+  } else {
+    const left = 21 - streak;
+    msg.textContent = streak === 0
+      ? 'Start your streak today!'
+      : `${left} day${left!==1?'s':''} to go — keep up the good work.`;
+    msg.className = 'habit-progress-msg';
+  }
+
+  // count yesterday button — show only if yesterday wasn't counted and today wasn't either
+  const btn = document.getElementById('btn-count-yesterday');
+  const yst = yesterdayStr();
+  btn.style.display = (h.last_completed !== yst && h.last_completed !== todayStr()) ? '' : 'none';
+}
+
+function openHabitDetail(id) {
+  activeHabitId = id;
+  renderHabitDetail(id);
+  habitDetailBd.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeHabitDetail() {
+  habitDetailBd.classList.remove('open');
+  document.body.style.overflow = '';
+  activeHabitId = null;
+}
+
+document.getElementById('btn-habit-detail-close').addEventListener('click', closeHabitDetail);
+habitDetailBd.addEventListener('click', e => { if (e.target === habitDetailBd) closeHabitDetail(); });
+
+document.getElementById('btn-delete-habit-detail').addEventListener('click', () => {
+  openConfirm('Delete this habit? All streak data will be lost.', async () => {
+    const id = activeHabitId;
+    closeHabitDetail();
+    habits = habits.filter(h => h.id !== id);
+    renderHabits();
+    try { await sbDeleteHabit(id); }
+    catch { showToast('Could not delete.', 'error'); habits = await sbFetchHabits(); renderHabits(); }
+  });
+});
+
+document.getElementById('btn-count-yesterday').addEventListener('click', async () => {
+  if (!activeHabitId) return;
+  await completeHabit(activeHabitId, yesterdayStr());
+  // hide button after use
+  document.getElementById('btn-count-yesterday').style.display = 'none';
+});
 
 // ── Escape ────────────────────────────────────────────────────────────────────
 document.addEventListener('keydown',e=>{
   if(e.key!=='Escape') return;
   if(confirmBackdrop.classList.contains('open')){closeConfirm();return;}
+  if(habitDetailBd.classList.contains('open')){closeHabitDetail();return;}
   if(seriesNotesBd.classList.contains('open')){closeSeriesNotesModal();return;}
   if(movieNotesBd.classList.contains('open')){closeMovieNotesModal();return;}
   if(bookNotesBd.classList.contains('open')){closeBookNotesModal();return;}
